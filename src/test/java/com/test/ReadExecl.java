@@ -17,23 +17,23 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 
 /**
- * excel¶ÁÈ¡
+ * excelï¿½ï¿½È¡
  * 
  * @author MFW
  *
  */
 public class ReadExecl {
 
-	/** ×ÜÐÐÊý */
+	/** ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 	private int totalRows = 0;
 
-	/** ×ÜÁÐÊý */
+	/** ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 	private int totalCells = 0;
 
-	/** ´íÎóÐÅÏ¢ */
+	/** ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ */
 	private String errorInfo;
 
-	/** ¹¹Ôì·½·¨ */
+	/** ï¿½ï¿½ï¿½ì·½ï¿½ï¿½ */
 	public ReadExecl() {
 
 	}
@@ -63,53 +63,53 @@ public class ReadExecl {
 	}
 
 	/**
-	 * @ÃèÊö£ºÑéÖ¤excelÎÄ¼þ
-	 * @×÷Õß£º½¨Äþ @Ê±¼ä£º2012-08-29 ÏÂÎç16:27:15
-	 * @²ÎÊý£º@param filePath ÎÄ¼þÍêÕûÂ·¾¶
-	 * @²ÎÊý£º@return
-	 * @·µ»ØÖµ£ºboolean
+	 * @ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤excelï¿½Ä¼ï¿½
+	 * @ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ @Ê±ï¿½ä£º2012-08-29 ï¿½ï¿½ï¿½ï¿½16:27:15
+	 * @ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½@param filePath ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½
+	 * @ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½@return
+	 * @ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½boolean
 	 */
 	public boolean validateExcel(String filePath) {
-		/** ¼ì²éÎÄ¼þÃûÊÇ·ñÎª¿Õ»òÕßÊÇ·ñÊÇExcel¸ñÊ½µÄÎÄ¼þ */
+		/** ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½Ç·ï¿½Îªï¿½Õ»ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Excelï¿½ï¿½Ê½ï¿½ï¿½ï¿½Ä¼ï¿½ */
 
 		if (filePath == null || !(WDWUtil.isExcel2003(filePath) || WDWUtil.isExcel2007(filePath))) {
-			errorInfo = "ÎÄ¼þÃû²»ÊÇexcel¸ñÊ½";
+			errorInfo = "ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½excelï¿½ï¿½Ê½";
 			return false;
 		}
 
-		/** ¼ì²éÎÄ¼þÊÇ·ñ´æÔÚ */
+		/** ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ */
 		File file = new File(filePath);
 		if (file == null || !file.exists()) {
-			errorInfo = "ÎÄ¼þ²»´æÔÚ";
+			errorInfo = "ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½";
 			return false;
 		}
 		return true;
 	}
 
 	/**
-	 * @ÃèÊö£º¸ù¾ÝÎÄ¼þÃû¶ÁÈ¡excelÎÄ¼þ
-	 * @×÷Õß£º½¨Äþ @Ê±¼ä£º2012-08-29 ÏÂÎç16:27:15
-	 * @²ÎÊý£º@param filePath ÎÄ¼þÍêÕûÂ·¾¶
-	 * @²ÎÊý£º@return
-	 * @·µ»ØÖµ£ºList
+	 * @ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½È¡excelï¿½Ä¼ï¿½
+	 * @ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ @Ê±ï¿½ä£º2012-08-29 ï¿½ï¿½ï¿½ï¿½16:27:15
+	 * @ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½@param filePath ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½
+	 * @ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½@return
+	 * @ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½List
 	 */
 	public List<List<String>> read(String filePath) {
 		List<List<String>> dataLst = new ArrayList<List<String>>();
 		InputStream is = null;
 		try {
-			/** ÑéÖ¤ÎÄ¼þÊÇ·ñºÏ·¨ */
+			/** ï¿½ï¿½Ö¤ï¿½Ä¼ï¿½ï¿½Ç·ï¿½Ï·ï¿½ */
 			if (!validateExcel(filePath)) {
 				System.out.println(errorInfo);
 				return null;
 			}
 
-			/** ÅÐ¶ÏÎÄ¼þµÄÀàÐÍ£¬ÊÇ2003»¹ÊÇ2007 */
+			/** ï¿½Ð¶ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½ï¿½ï¿½2003ï¿½ï¿½ï¿½ï¿½2007 */
 			boolean isExcel2003 = true;
 			if (WDWUtil.isExcel2007(filePath)) {
 				isExcel2003 = false;
 			}
 
-			/** µ÷ÓÃ±¾ÀàÌá¹©µÄ¸ù¾ÝÁ÷¶ÁÈ¡µÄ·½·¨ */
+			/** ï¿½ï¿½ï¿½Ã±ï¿½ï¿½ï¿½ï¿½á¹©ï¿½Ä¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½Ä·ï¿½ï¿½ï¿½ */
 			File file = new File(filePath);
 			is = new FileInputStream(file);
 			dataLst = read(is, isExcel2003);
@@ -127,12 +127,12 @@ public class ReadExecl {
 			}
 		}
 
-		/** ·µ»Ø×îºó¶ÁÈ¡µÄ½á¹û */
+		/** ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½Ä½ï¿½ï¿½ */
 		return dataLst;
 	}
 
 	/**
-	 * ¸ù¾ÝÁ÷¶ÁÈ¡ExcelÎÄ¼þ
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡Excelï¿½Ä¼ï¿½
 	 * 
 	 * @param inputStream
 	 * @param isExcel2003
@@ -141,7 +141,7 @@ public class ReadExecl {
 	public List<List<String>> read(InputStream inputStream, boolean isExcel2003) {
 		List<List<String>> dataLst = null;
 		try {
-			/** ¸ù¾Ý°æ±¾Ñ¡Ôñ´´½¨WorkbookµÄ·½Ê½ */
+			/** ï¿½ï¿½ï¿½Ý°æ±¾Ñ¡ï¿½ñ´´½ï¿½Workbookï¿½Ä·ï¿½Ê½ */
 			Workbook wb = null;
 			if (isExcel2003) {
 				wb = new HSSFWorkbook(inputStream);
@@ -156,7 +156,7 @@ public class ReadExecl {
 	}
 
 	/**
-	 * ¶ÁÈ¡Êý¾Ý
+	 * ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½
 	 * 
 	 * @param wb
 	 * @return List<List<String>>
@@ -164,19 +164,19 @@ public class ReadExecl {
 	private List<List<String>> read(Workbook wb) {
 		List<List<String>> dataLst = new ArrayList<List<String>>();
 
-		/** µÃµ½µÚÒ»¸öshell */
+		/** ï¿½Ãµï¿½ï¿½ï¿½Ò»ï¿½ï¿½shell */
 		Sheet sheet = wb.getSheetAt(0);
 		
 
-		/** µÃµ½ExcelµÄÐÐÊý */
+		/** ï¿½Ãµï¿½Excelï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 		this.totalRows = sheet.getPhysicalNumberOfRows();
 
-		/** µÃµ½ExcelµÄÁÐÊý */
+		/** ï¿½Ãµï¿½Excelï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 		if (this.totalRows >= 1 && sheet.getRow(0) != null) {
 			this.totalCells = sheet.getRow(0).getPhysicalNumberOfCells();
 		}
 
-		/** Ñ­»·ExcelµÄÐÐ */
+		/** Ñ­ï¿½ï¿½Excelï¿½ï¿½ï¿½ï¿½ */
 		for (int r = 0; r < this.totalRows; r++) {
 			Row row = sheet.getRow(r);
 			if (row == null) {
@@ -184,18 +184,18 @@ public class ReadExecl {
 			}
 			List<String> rowLst = new ArrayList<String>();
 
-			/** Ñ­»·ExcelµÄÁÐ */
+			/** Ñ­ï¿½ï¿½Excelï¿½ï¿½ï¿½ï¿½ */
 			for (int c = 0; c < this.getTotalCells(); c++) {
 				Cell cell = row.getCell(c);
 				String cellValue = "";
 				if (null != cell) {
-					// ÒÔÏÂÊÇÅÐ¶ÏÊý¾ÝµÄÀàÐÍ
+					// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½Ýµï¿½ï¿½ï¿½ï¿½ï¿½
 					switch (cell.getCellType()) {
-					case NUMERIC: // Êý×Ö
+					case NUMERIC: // ï¿½ï¿½ï¿½ï¿½
 						cellValue = cell.getNumericCellValue() + "";
 						break;
 
-					case STRING: // ×Ö·û´®
+					case STRING: // ï¿½Ö·ï¿½ï¿½ï¿½
 						cellValue = cell.getStringCellValue();
 						break;
 
@@ -203,27 +203,27 @@ public class ReadExecl {
 						cellValue = cell.getBooleanCellValue() + "";
 						break;
 
-					case FORMULA: // ¹«Ê½
+					case FORMULA: // ï¿½ï¿½Ê½
 						cellValue = cell.getCellFormula() + "";
 						break;
 
-					case BLANK: // ¿ÕÖµ
+					case BLANK: // ï¿½ï¿½Öµ
 						cellValue = "";
 						break;
 
-					case ERROR: // ¹ÊÕÏ
-						cellValue = "·Ç·¨×Ö·û";
+					case ERROR: // ï¿½ï¿½ï¿½ï¿½
+						cellValue = "ï¿½Ç·ï¿½ï¿½Ö·ï¿½";
 						break;
 
 					default:
-						cellValue = "Î´ÖªÀàÐÍ";
+						cellValue = "Î´Öªï¿½ï¿½ï¿½ï¿½";
 						break;
 					}
 				}
 				rowLst.add(cellValue);
 			}
 
-			/** ±£´æµÚrÐÐµÄµÚcÁÐ */
+			/** ï¿½ï¿½ï¿½ï¿½ï¿½rï¿½ÐµÄµï¿½cï¿½ï¿½ */
 			dataLst.add(rowLst);
 		}
 		return dataLst;
@@ -232,16 +232,16 @@ public class ReadExecl {
 }
 
 /***
- * ¹¤¾ßÀà
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  * 
  * @author MFW
  *
  */
 class WDWUtil {
 	/**
-	 * ÊÇ·ñÊÇ2003µÄexcel£¬·µ»ØtrueÊÇ2003
+	 * ï¿½Ç·ï¿½ï¿½ï¿½2003ï¿½ï¿½excelï¿½ï¿½ï¿½ï¿½ï¿½ï¿½trueï¿½ï¿½2003
 	 * 
-	 * @param filePath ÎÄ¼þÍêÕûÂ·¾¶
+	 * @param filePath ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½
 	 * @return boolean
 	 */
 	public static boolean isExcel2003(String filePath) {
@@ -249,9 +249,9 @@ class WDWUtil {
 	}
 
 	/**
-	 * ÊÇ·ñÊÇ2007µÄexcel£¬·µ»ØtrueÊÇ2007
+	 * ï¿½Ç·ï¿½ï¿½ï¿½2007ï¿½ï¿½excelï¿½ï¿½ï¿½ï¿½ï¿½ï¿½trueï¿½ï¿½2007
 	 * 
-	 * @param filePath ÎÄ¼þÍêÕûÂ·¾¶
+	 * @param filePath ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½
 	 * @return boolean
 	 */
 	public static boolean isExcel2007(String filePath) {

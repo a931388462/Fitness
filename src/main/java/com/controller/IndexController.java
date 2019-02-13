@@ -8,7 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.stereotype.Controller;
+
 @WebServlet("/indexController")
+@Controller
 public class IndexController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
