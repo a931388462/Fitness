@@ -1,11 +1,9 @@
 package com.mapper;
 
-import java.util.List;
-
-import org.apache.ibatis.annotations.Param;
-
 import com.po.FitnessUser;
 import com.po.FitnessUserExample;
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface FitnessUserMapper {
     long countByExample(FitnessUserExample example);

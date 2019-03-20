@@ -15,7 +15,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import com.base.BaseServlet;
-import com.service.FitnessUserService;
+import com.po.FitnessUser;
+import com.service.LoginService;
 
 
 @WebServlet("/loginController")
@@ -23,7 +24,7 @@ import com.service.FitnessUserService;
 public class LoginController extends BaseServlet {
 	
 	@Autowired
-	private FitnessUserService fitnessUserService;
+	private LoginService loginService;
 
 	private static final long serialVersionUID = 1L;
 	
@@ -33,7 +34,9 @@ public class LoginController extends BaseServlet {
 		//response.setStatus(307);  
 		//response.setHeader("Location", "indexController");  
 		
-		fitnessUserService.test();
+		FitnessUser fitnessUser = new FitnessUser();
+		
+		loginService.login(fitnessUser);
 		
 		response.sendRedirect("indexController");
 	}

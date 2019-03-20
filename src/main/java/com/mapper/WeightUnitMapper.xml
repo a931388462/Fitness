@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.WeightUnitMapper">
+  <resultMap id="BaseResultMap" type="com.po.WeightUnit">
+    <id column="unitId" jdbcType="INTEGER" property="unitid" />
+    <result column="unitName" jdbcType="VARCHAR" property="unitname" />
+    <result column="unit" jdbcType="VARCHAR" property="unit" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    unitId, unitName, unit
+  </sql>
+  <select id="selectByExample" parameterType="com.po.WeightUnitExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from weight_unit
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from weight_unit
+    where unitId = #{unitid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from weight_unit
+    where unitId = #{unitid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.po.WeightUnitExample">
+    delete from weight_unit
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.po.WeightUnit">
+    insert into weight_unit (unitId, unitName, unit
+      )
+    values (#{unitid,jdbcType=INTEGER}, #{unitname,jdbcType=VARCHAR}, #{unit,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.po.WeightUnit">
+    insert into weight_unit
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="unitid != null">
+        unitId,
+      </if>
+      <if test="unitname != null">
+        unitName,
+      </if>
+      <if test="unit != null">
+        unit,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="unitid != null">
+        #{unitid,jdbcType=INTEGER},
+      </if>
+      <if test="unitname != null">
+        #{unitname,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null">
+        #{unit,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.po.WeightUnitExample" resultType="java.lang.Long">
+    select count(*) from weight_unit
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update weight_unit
+    <set>
+      <if test="record.unitid != null">
+        unitId = #{record.unitid,jdbcType=INTEGER},
+      </if>
+      <if test="record.unitname != null">
+        unitName = #{record.unitname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.unit != null">
+        unit = #{record.unit,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update weight_unit
+    set unitId = #{record.unitid,jdbcType=INTEGER},
+      unitName = #{record.unitname,jdbcType=VARCHAR},
+      unit = #{record.unit,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.po.WeightUnit">
+    update weight_unit
+    <set>
+      <if test="unitname != null">
+        unitName = #{unitname,jdbcType=VARCHAR},
+      </if>
+      <if test="unit != null">
+        unit = #{unit,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where unitId = #{unitid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.po.WeightUnit">
+    update weight_unit
+    set unitName = #{unitname,jdbcType=VARCHAR},
+      unit = #{unit,jdbcType=VARCHAR}
+    where unitId = #{unitid,jdbcType=INTEGER}
+  </update>
+</mapper>
