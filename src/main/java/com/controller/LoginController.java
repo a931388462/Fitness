@@ -22,7 +22,6 @@ import com.service.LoginService;
 @WebServlet("/loginController")
 @Controller
 public class LoginController extends BaseServlet {
-	
 	@Autowired
 	private LoginService loginService;
 

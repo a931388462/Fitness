@@ -3,6 +3,7 @@
 <mapper namespace="com.mapper.TrainDateMapper">
   <resultMap id="BaseResultMap" type="com.po.TrainDate">
     <result column="trainDate" jdbcType="DATE" property="traindate" />
+    <result column="typeName" jdbcType="VARCHAR" property="typename" />
     <result column="typeId" jdbcType="INTEGER" property="typeid" />
     <result column="userId" jdbcType="INTEGER" property="userid" />
   </resultMap>
@@ -65,7 +66,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    trainDate, typeId, userId
+    trainDate, typeName, typeId, userId
   </sql>
   <select id="selectByExample" parameterType="com.po.TrainDateExample" resultMap="BaseResultMap">
     select
@@ -88,16 +89,19 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.po.TrainDate">
-    insert into train_date (trainDate, typeId, userId
-      )
-    values (#{traindate,jdbcType=DATE}, #{typeid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}
-      )
+    insert into train_date (trainDate, typeName, typeId, 
+      userId)
+    values (#{traindate,jdbcType=DATE}, #{typename,jdbcType=VARCHAR}, #{typeid,jdbcType=INTEGER}, 
+      #{userid,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.po.TrainDate">
     insert into train_date
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="traindate != null">
         trainDate,
+      </if>
+      <if test="typename != null">
+        typeName,
       </if>
       <if test="typeid != null">
         typeId,
@@ -109,6 +113,9 @@
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="traindate != null">
         #{traindate,jdbcType=DATE},
+      </if>
+      <if test="typename != null">
+        #{typename,jdbcType=VARCHAR},
       </if>
       <if test="typeid != null">
         #{typeid,jdbcType=INTEGER},
@@ -130,6 +137,9 @@
       <if test="record.traindate != null">
         trainDate = #{record.traindate,jdbcType=DATE},
       </if>
+      <if test="record.typename != null">
+        typeName = #{record.typename,jdbcType=VARCHAR},
+      </if>
       <if test="record.typeid != null">
         typeId = #{record.typeid,jdbcType=INTEGER},
       </if>
@@ -144,6 +154,7 @@
   <update id="updateByExample" parameterType="map">
     update train_date
     set trainDate = #{record.traindate,jdbcType=DATE},
+      typeName = #{record.typename,jdbcType=VARCHAR},
       typeId = #{record.typeid,jdbcType=INTEGER},
       userId = #{record.userid,jdbcType=INTEGER}
     <if test="_parameter != null">

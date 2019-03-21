@@ -5,6 +5,8 @@ import java.util.Date;
 public class TrainDate {
     private Date traindate;
 
+    private String typename;
+
     private Integer typeid;
 
     private Integer userid;
@@ -15,6 +17,14 @@ public class TrainDate {
 
     public void setTraindate(Date traindate) {
         this.traindate = traindate;
+    }
+
+    public String getTypename() {
+        return typename;
+    }
+
+    public void setTypename(String typename) {
+        this.typename = typename == null ? null : typename.trim();
     }
 
     public Integer getTypeid() {

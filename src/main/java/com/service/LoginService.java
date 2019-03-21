@@ -19,10 +19,10 @@ public class LoginService {
 	public boolean login(FitnessUser fitnessUser) {
 		
 		
-		FitnessUserExample example = new FitnessUserExample();
-		example.createCriteria().andUsernameEqualTo(fitnessUser.getUsername());
+		//FitnessUserExample example = new FitnessUserExample();
+		//example.createCriteria().andUsernameEqualTo(fitnessUser.getUsername());
 		
-		fitnessUserMapper.selectByExample(example);
+		fitnessUserMapper.selectByPrimaryKey(1);
 		return false;
 	}
 	
