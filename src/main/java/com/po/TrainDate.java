@@ -42,4 +42,16 @@ public class TrainDate {
     public void setUserid(Integer userid) {
         this.userid = userid;
     }
+    
+    //日期字符表示
+	private String traindateStr;
+	
+	public String getTraindateStr() {
+		return traindateStr;
+	}
+
+	public void setTraindateStr(String traindateStr) {
+		this.traindateStr = traindateStr;
+	}
+    
 }

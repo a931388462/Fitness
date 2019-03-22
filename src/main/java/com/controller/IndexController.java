@@ -1,6 +1,7 @@
 package com.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,7 +13,9 @@ import org.springframework.stereotype.Controller;
 
 import com.base.BaseServlet;
 import com.po.FitnessUser;
+import com.po.TrainDate;
 import com.service.IndexService;
+import com.util.DateConversion;
 
 @WebServlet("/indexController")
 @Controller
@@ -28,26 +31,22 @@ public class IndexController extends BaseServlet {
 		FitnessUser fitnessUser = new FitnessUser();
 		fitnessUser.setUserid(1);
 		
-		indexService.index(fitnessUser);
+		List<TrainDate> trainDates = indexService.index(fitnessUser);
 		
+		//日期变换
+		for (TrainDate trainDate : trainDates) {
+			trainDate.setTraindateStr(DateConversion.date2String(trainDate.getTraindate(), "yyyy-MM-dd"));
+		}
 		
-		//request.setAttribute(arg0, arg1);
-		request.getRequestDispatcher("/test.jsp").forward(request,response); 
+		request.setAttribute("trainDates", trainDates);
 		
-		
+		request.getRequestDispatcher("/jsp/loginIndex.jsp").forward(request,response); 
 		
 		
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		FitnessUser fitnessUser = new FitnessUser();
-		fitnessUser.setUserid(1);
-		
-		indexService.index(fitnessUser);
-		
-		
-		//request.setAttribute(arg0, arg1);
-		request.getRequestDispatcher("/test.jsp").forward(request,response); 
+	
 	}
 	
 }
