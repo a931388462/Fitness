@@ -7,19 +7,27 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 	<title>主页</title>
 	
+	<script src='resources/jquery3.3.1.js' type="text/javascript" charset="utf-8"></script>
+	
+	<!-- 日历插件 -->
 	<link href="resources/calendar/core/main.css" rel='stylesheet' />
 	<link href="resources/calendar/daygrid/main.css" rel='stylesheet' />
-	
 	<script src='resources/calendar/core/main.js'></script>
 	<script src="resources/calendar/daygrid/main.js"></script>
 	<script src="resources/calendar/interaction/main.js"></script>
-	<script src="resources/calendar/core/locales/zh-cn.js" type="text/javascript" charset="utf-8"></script>
+	<script src="resources/calendar/core/locales/zh-cn.js"></script>
 	
-	<script src='resources/jquery3.3.1.js' type="text/javascript" charset="utf-8"></script>
+	<!-- bootstrap -->
+	<script src="resources/bootstrap/bootstrap.js"></script>
+	<link rel="stylesheet" type="text/css" href="resources/bootstrap/bootstrap.css"/>
 	
 </head>
 <body>
 	<div id="calendar" style="min-height:99vh;"></div>
+	
+	<!-- 静态引入popup页面 -->
+	<%@include file="trainContent/trainContentPopup.jsp"%>
+	
 </body>
 
 <script type="text/javascript">
@@ -31,8 +39,6 @@
 		trainDate = {typename:'${trainDate.typename}',traindateStr:'${trainDate.traindateStr}'};
 		trainDates.push(trainDate);
 	</c:forEach>
-	
-	
 	
 	//一个日期的初始化
 	var eventSources = [];
@@ -47,9 +53,9 @@
 			,textColor: 'yellow'
 		});
 	}
-	
 	eventSources.push(list);
 	
+	//日期插件初始化
 	document.addEventListener('DOMContentLoaded', function() {
 		var calendarEl = document.getElementById('calendar');
 		var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -59,7 +65,7 @@
 	    	height:'parent',
 	    	eventSources: eventSources,
 			dateClick: function(info) {
-				alert('clicked ' + info.dateStr);
+				$('#myModal').modal();
 			},
 	   });
 		calendar.render();
