@@ -25,8 +25,9 @@
 <body>
 	<div id="calendar" style="min-height:99vh;"></div>
 	
-	<!-- 静态引入popup页面 -->
-	<%@include file="trainContent/trainContentPopup.jsp"%>
+	<!-- 引入popup页面 -->
+	<c:import url="trainContent/trainContentPopup.jsp"></c:import> 
+	<%-- <%@include file="trainContent/trainContentPopup.jsp"%> --%>
 	
 </body>
 
@@ -65,11 +66,37 @@
 	    	height:'parent',
 	    	eventSources: eventSources,
 			dateClick: function(info) {
+				//弹出框标题设置
+				$('#myModalLabel').html(info.dateStr);
 				$('#myModal').modal();
 			},
 	   });
 		calendar.render();
 	});
+	
+	
+	function getabcde() {
+		$.ajax({
+			type : "post",//向后台请求的方式，有post，get两种方法
+			url : WWWROOT + "/sys/userMgr/deleteUser",//url填写的是请求的路径
+			cache : false,//缓存是否打开
+			dataType : 'json',//请求的数据类型
+			data : {//请求的数据，
+				orgId :OrgId,
+				"userIds" : userId
+			},
+			success : function(data) {//请求的返回成功的方法
+				if (data && data.success) {
+					alert("已经删除成功。");
+				} else {
+					alert("删除失败，原因：" + data.msg);
+				}
+			},
+			error : function(XMLHttpRequest, textStatus, errorThrown) {//请求的失败的返回的方法
+				alert("删除失败，请稍后再次尝试删除！");
+			}
+		});
+	}
 	
 </script>
 

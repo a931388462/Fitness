@@ -14,6 +14,8 @@ import org.springframework.stereotype.Controller;
 import com.base.BaseServlet;
 import com.po.FitnessUser;
 import com.po.TrainDate;
+import com.po.TrainType;
+import com.po.WeightUnit;
 import com.service.IndexService;
 import com.util.DateConversion;
 
@@ -31,7 +33,9 @@ public class IndexController extends BaseServlet {
 		FitnessUser fitnessUser = new FitnessUser();
 		fitnessUser.setUserid(1);
 		
-		List<TrainDate> trainDates = indexService.index(fitnessUser);
+		List<TrainDate> trainDates = indexService.getTrainDates(fitnessUser);
+		List<WeightUnit> weightUnits = indexService.getWeightUnits();
+		List<TrainType> trainTypes = indexService.getTrainTypes();
 		
 		//日期变换
 		for (TrainDate trainDate : trainDates) {
@@ -39,6 +43,9 @@ public class IndexController extends BaseServlet {
 		}
 		
 		request.setAttribute("trainDates", trainDates);
+		request.setAttribute("weightUnits", weightUnits);
+		request.setAttribute("trainTypes", trainTypes);
+		
 		
 		request.getRequestDispatcher("/jsp/loginIndex.jsp").forward(request,response); 
 		

@@ -1,5 +1,6 @@
 <!--popup-->
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -26,9 +27,9 @@
 					    <label for="typeid" class="col-md-4 control-label">train</label>
 					    <div class="col-md-8">
 					      <select id="typeid" class="form-control">
-					        <option value="1">卧推</option>
-					        <option value="2">深蹲</option>
-					        <option value="3">硬拉</option>
+					      	<c:forEach items="${trainTypes}" var="trainType">
+					      		 <option value="${trainType.typeid}">${trainType.typename}</option>
+							</c:forEach>
 					      </select>
 					    </div>
 					</div>
@@ -38,8 +39,9 @@
 					    <label for="unit" class="col-md-4 control-label">单位</label>
 					    <div class="col-md-8">
 					      <select id="unit" class="form-control">
-					        <option value="1">LB</option>
-					        <option value="2">KG</option>
+					        <c:forEach items="${weightUnits}" var="weightUnit">
+					      		 <option value="${weightUnit.unitid}">${weightUnit.unitname}</option>
+							</c:forEach>
 					      </select>
 					    </div>
 					</div>
