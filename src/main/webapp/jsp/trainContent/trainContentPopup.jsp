@@ -18,31 +18,34 @@
       		<div class="row">
 	  		  <div class="col-md-2 col-md-push-10">容量</div>
 			</div>
-			<div class="row">
-			  <div class="col-md-6 form-horizontal">
-			  	<div class="form-group">
-				    <label for="aa" class="col-md-4 control-label">train</label>
-				    <div class="col-md-8">
-				      <select id="aa" class="form-control">
-				        <option>卧推</option>
-				        <option>深蹲</option>
-				        <option>硬拉</option>
-				      </select>
-				    </div>
+			
+			<form action="">
+				<div class="row">
+				  <div class="col-md-6 form-horizontal">
+				  	<div class="form-group">
+					    <label for="typeid" class="col-md-4 control-label">train</label>
+					    <div class="col-md-8">
+					      <select id="typeid" class="form-control">
+					        <option value="1">卧推</option>
+					        <option value="2">深蹲</option>
+					        <option value="3">硬拉</option>
+					      </select>
+					    </div>
+					</div>
+				  </div>
+				  <div class="col-md-6 form-horizontal">
+				  	<div class="form-group">
+					    <label for="unit" class="col-md-4 control-label">单位</label>
+					    <div class="col-md-8">
+					      <select id="unit" class="form-control">
+					        <option value="1">LB</option>
+					        <option value="2">KG</option>
+					      </select>
+					    </div>
+					</div>
+				  </div>
 				</div>
-			  </div>
-			  <div class="col-md-6 form-horizontal">
-			  	<div class="form-group">
-				    <label for="bb" class="col-md-4 control-label">单位</label>
-				    <div class="col-md-8">
-				      <select id="bb" class="form-control">
-				        <option>LB</option>
-				        <option>KG</option>
-				      </select>
-				    </div>
-				</div>
-			  </div>
-			</div>
+			</form>
 			
 			<!--一个节点(通过js在画面上显示)-->
 			<div id="dom" style="display: none;"> 

@@ -60,3 +60,19 @@ function removedom(dom){
 	changeItemNumber();		//修改itemid
 	bindLastInputEvent();	//将事件绑定到最后一组input
 }
+
+//trainContents取得
+function getTrainContents () {
+	var trainContent = {};
+	var trainContents = [];
+	
+	$("[id^='item']").each(function(i) {
+		if(i != 0){
+			trainContent.typeid = $("#typeid").val();
+			trainContent.unit = $("#unit").val();
+			trainContent.weight = $(this).find("[name='weight']").val();
+			trainContent.number = $(this).find("[name='number']").val();
+			trainContents.push(trainContent);
+		}
+	});
+}
