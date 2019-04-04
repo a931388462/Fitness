@@ -31,13 +31,13 @@
 </body>
 
 <script type="text/javascript">
-	//trainDates初期化
-	var trainDates = [];
-	var trainDate = {};
+	//trainContents初期化
+	var trainContents = [];
+	var trainContent = {};
 	
-	<c:forEach items="${trainDates}" var="trainDate">
-		trainDate = {typename:'${trainDate.typename}',traindateStr:'${trainDate.traindateStr}'};
-		trainDates.push(trainDate);
+	<c:forEach items="${trainContents}" var="trainContent">
+		trainContent = {typeName:'${trainContent.typename}',trainContentStr:'${trainContent.trainContentStr}'};
+		trainContents.push(trainContent);
 	</c:forEach>
 	
 	//一个日期的初始化
@@ -45,10 +45,10 @@
 	var list = {};
 	list.events = [];
 	
-	for (var i = 0;i<trainDates.length;i++) {
+	for (var i = 0;i<trainContents.length;i++) {
 		list.events.push({
-			title: trainDates[i].typename
-			,start:trainDates[i].traindateStr
+			title: trainContents[i].typeName
+			,start:trainContents[i].trainContentStr
 			,color: 'black'
 			,textColor: 'yellow'
 		});
@@ -65,6 +65,8 @@
 	    	height:'parent',
 	    	eventSources: eventSources,
 			dateClick: function(info) {
+				//弹出框标题设置
+				$('#myModalLabel').html(info.dateStr);
 				$('#myModal').modal();
 			},
 	   });

@@ -2,7 +2,7 @@ package com.po;
 
 import java.util.Date;
 
-public class TrainDate {
+public class TrainContent {
     private Date traindate;
 
     private String typename;
@@ -43,15 +43,15 @@ public class TrainDate {
         this.userid = userid;
     }
     
-    //日期字符表示
-	private String traindateStr;
-	
-	public String getTraindateStr() {
-		return traindateStr;
-	}
 
-	public void setTraindateStr(String traindateStr) {
-		this.traindateStr = traindateStr;
+	private String trainContentStr;
+	
+	public String getTrainContentStr() {
+		return trainContentStr;
+	}
+	
+	public void setTrainContentStr(String trainContentStr) {
+		this.trainContentStr = trainContentStr;
 	}
     
 }

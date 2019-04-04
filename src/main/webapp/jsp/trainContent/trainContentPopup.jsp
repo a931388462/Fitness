@@ -4,8 +4,14 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-      	<h4 class="modal-title" id="myModalLabel">Modal title</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      	<div class="row">
+			<div class="col-md-10">
+				<h4 class="modal-title" id="myModalLabel">日期</h4>
+			</div>
+			<div class="col-md-2">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			</div>
+		</div>
       </div>
       <div class="modal-body">
       	<div class="container-fluid" id="father">
@@ -18,9 +24,9 @@
 				    <label for="aa" class="col-md-4 control-label">train</label>
 				    <div class="col-md-8">
 				      <select id="aa" class="form-control">
-				        <option>Disabled select</option>
-				        <option>Disabled select</option>
-				        <option>Disabled select</option>
+				        <option>卧推</option>
+				        <option>深蹲</option>
+				        <option>硬拉</option>
 				      </select>
 				    </div>
 				</div>
@@ -30,17 +36,15 @@
 				    <label for="bb" class="col-md-4 control-label">单位</label>
 				    <div class="col-md-8">
 				      <select id="bb" class="form-control">
-				        <option>Disabled select</option>
-				        <option>Disabled select</option>
-				        <option>Disabled select</option>
+				        <option>LB</option>
+				        <option>KG</option>
 				      </select>
 				    </div>
 				</div>
 			  </div>
 			</div>
 			
-			
-			<!--一个节点(通过js在画面显示)-->
+			<!--一个节点(通过js在画面上显示)-->
 			<div id="dom" style="display: none;"> 
 				<div class='row' id="item0">
 				  <div class='col-md-6 form-horizontal'>
@@ -66,8 +70,8 @@
       	</div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+        <button type="button" class="btn btn-primary">提交</button>
       </div>
     </div>
   </div>

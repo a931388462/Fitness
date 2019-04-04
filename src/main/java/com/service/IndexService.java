@@ -5,21 +5,21 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.mapper.TrainDateMapper;
+import com.mapper.TrainContentMapper;
 import com.po.FitnessUser;
-import com.po.TrainDate;
-import com.po.TrainDateExample;
+import com.po.TrainContent;
+import com.po.TrainContentExample;
 
 @Service
 public class IndexService {
 
 	@Autowired
-	TrainDateMapper trainDateMapper;
+	TrainContentMapper trainContentMapper;
 	
-	public List<TrainDate> index(FitnessUser fitnessUser) {
-		TrainDateExample example = new TrainDateExample();
+	public List<TrainContent> index(FitnessUser fitnessUser) {
+		TrainContentExample example = new TrainContentExample();
 		example.createCriteria().andUseridEqualTo(fitnessUser.getUserid());
-		List<TrainDate> trainDates = trainDateMapper.selectByExample(example);
+		List<TrainContent> trainDates = trainContentMapper.selectByExample(example);
 		
 		System.out.println(trainDates);
 		

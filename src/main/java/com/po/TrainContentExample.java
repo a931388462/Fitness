@@ -5,14 +5,14 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
-public class TrainDateExample {
+public class TrainContentExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public TrainDateExample() {
+    public TrainContentExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 

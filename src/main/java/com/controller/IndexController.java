@@ -13,7 +13,7 @@ import org.springframework.stereotype.Controller;
 
 import com.base.BaseServlet;
 import com.po.FitnessUser;
-import com.po.TrainDate;
+import com.po.TrainContent;
 import com.service.IndexService;
 import com.util.DateConversion;
 
@@ -31,14 +31,14 @@ public class IndexController extends BaseServlet {
 		FitnessUser fitnessUser = new FitnessUser();
 		fitnessUser.setUserid(1);
 		
-		List<TrainDate> trainDates = indexService.index(fitnessUser);
+		List<TrainContent> trainContents = indexService.index(fitnessUser);
 		
 		//日期变换
-		for (TrainDate trainDate : trainDates) {
-			trainDate.setTraindateStr(DateConversion.date2String(trainDate.getTraindate(), "yyyy-MM-dd"));
+		for (TrainContent trainContent : trainContents) {
+			trainContent.setTrainContentStr(DateConversion.date2String(trainContent.getTraindate(), "yyyy-MM-dd"));
 		}
 		
-		request.setAttribute("trainDates", trainDates);
+		request.setAttribute("trainContents", trainContents);
 		
 		request.getRequestDispatcher("/jsp/loginIndex.jsp").forward(request,response); 
 		

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.mapper.TrainDateMapper">
-  <resultMap id="BaseResultMap" type="com.po.TrainDate">
+<mapper namespace="com.mapper.TrainContentMapper">
+  <resultMap id="BaseResultMap" type="com.po.TrainContent">
     <result column="trainDate" jdbcType="DATE" property="traindate" />
     <result column="typeName" jdbcType="VARCHAR" property="typename" />
     <result column="typeId" jdbcType="INTEGER" property="typeid" />
@@ -68,13 +68,13 @@
   <sql id="Base_Column_List">
     trainDate, typeName, typeId, userId
   </sql>
-  <select id="selectByExample" parameterType="com.po.TrainDateExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.po.TrainContentExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from train_date
+    from train_content
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -82,20 +82,20 @@
       order by ${orderByClause}
     </if>
   </select>
-  <delete id="deleteByExample" parameterType="com.po.TrainDateExample">
-    delete from train_date
+  <delete id="deleteByExample" parameterType="com.po.TrainContentExample">
+    delete from train_content
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.po.TrainDate">
-    insert into train_date (trainDate, typeName, typeId, 
+  <insert id="insert" parameterType="com.po.TrainContent">
+    insert into train_content (trainDate, typeName, typeId, 
       userId)
     values (#{traindate,jdbcType=DATE}, #{typename,jdbcType=VARCHAR}, #{typeid,jdbcType=INTEGER}, 
       #{userid,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.po.TrainDate">
-    insert into train_date
+  <insert id="insertSelective" parameterType="com.po.TrainContent">
+    insert into train_content
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="traindate != null">
         trainDate,
@@ -125,14 +125,14 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.po.TrainDateExample" resultType="java.lang.Long">
-    select count(*) from train_date
+  <select id="countByExample" parameterType="com.po.TrainContentExample" resultType="java.lang.Long">
+    select count(*) from train_content
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update train_date
+    update train_content
     <set>
       <if test="record.traindate != null">
         trainDate = #{record.traindate,jdbcType=DATE},
@@ -152,7 +152,7 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update train_date
+    update train_content
     set trainDate = #{record.traindate,jdbcType=DATE},
       typeName = #{record.typename,jdbcType=VARCHAR},
       typeId = #{record.typeid,jdbcType=INTEGER},
