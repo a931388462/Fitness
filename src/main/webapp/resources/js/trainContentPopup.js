@@ -61,6 +61,32 @@ function removedom(dom){
 	bindLastInputEvent();	//将事件绑定到最后一组input
 }
 
+//ajax发送trainContents
+function sendTrainContents() {
+	$.ajax({
+		type : "post",//向后台请求的方式，有post，get两种方法
+		contentType: "text/html;charset=UTF-8",
+		url : basePath + "/trainContentController",//url填写的是请求的路径
+		cache : false,//缓存是否打开
+		dataType : 'json',//请求的数据类型
+		data : {//请求的数据，
+			
+			/*aa : [{}],*/
+			trainContents : JSON.stringify(getTrainContents()),
+		},
+		success : function(data) {//请求的返回成功的方法
+			if (data && data.success) {
+				alert("已经删除成功。");
+			} else {
+				alert("删除失败，原因：" + data.msg);
+			}
+		},
+		error : function(XMLHttpRequest, textStatus, errorThrown) {//请求的失败的返回的方法
+			alert("删除失败，请稍后再次尝试删除！");
+		}
+	});
+}
+
 //trainContents取得
 function getTrainContents () {
 	var trainContent = {};
@@ -75,4 +101,6 @@ function getTrainContents () {
 			trainContents.push(trainContent);
 		}
 	});
+	
+	return trainContents;
 }
