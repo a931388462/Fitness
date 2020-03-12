@@ -1,0 +1,44 @@
+SELECT DISTINCT
+	`train_bencpress`.`trainDate` AS `trainDate`,
+	`train_type`.`typeName` AS `typeName`,
+	`train_bencpress`.`typeId` AS `typeId`,
+	`train_bencpress`.`userId` AS `userId`
+FROM
+	(
+		`train_bencpress`
+		JOIN `train_type`
+	)
+WHERE
+	(
+		`train_type`.`typeId` = `train_bencpress`.`typeId`
+	)
+UNION ALL
+	SELECT DISTINCT
+		`train_harddrawn`.`trainDate` AS `trainDate`,
+		`train_type`.`typeName` AS `typeName`,
+		`train_harddrawn`.`typeId` AS `typeId`,
+		`train_harddrawn`.`userId` AS `userId`
+	FROM
+		(
+			`train_harddrawn`
+			JOIN `train_type`
+		)
+	WHERE
+		(
+			`train_type`.`typeId` = `train_harddrawn`.`typeId`
+		)
+	UNION ALL
+		SELECT DISTINCT
+			`train_squat`.`trainDate` AS `trainDate`,
+			`train_type`.`typeName` AS `typeName`,
+			`train_squat`.`typeId` AS `typeId`,
+			`train_squat`.`userId` AS `userId`
+		FROM
+			(
+				`train_squat`
+				JOIN `train_type`
+			)
+		WHERE
+			(
+				`train_type`.`typeId` = `train_squat`.`typeId`
+			)
