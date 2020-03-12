@@ -4,14 +4,19 @@ var $addDom = $("#dom").html();
 
 //item初始化
 $(function(){
+	initItem(0);
+});
+
+/* item初始化 */
+function initItem(i) {
 	//初始化条数
 	var initNum = 5;
-	for(var i=1;i<=initNum;i++){
+	for(i;i < initNum;i++){
 		addItemNumber($addDom);
 	}
 	changeItemNumber();
-	bindLastInputEvent();	
-});
+	bindLastInputEvent();
+}
 
 /* 取得最后一组item */
 function getLastInput() {

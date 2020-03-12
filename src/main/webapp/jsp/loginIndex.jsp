@@ -30,16 +30,14 @@
 </head>
 <body>
 	<div id="calendar" style="min-height:99vh;"></div>
-	
 	<!-- 引入popup页面 -->
-	<c:import url="trainContent/trainContentPopup.jsp"></c:import> 
-	<%-- <%@include file="trainContent/trainContentPopup.jsp"%> --%>
+	<%--<c:import url="trainContent/trainContentPopup.jsp"></c:import> --%>
+	<%@include file="trainContent/trainContentPopup.jsp"%>
 	
 </body>
 
 <script type="text/javascript">
 	var basePath = "<%=basePath%>";
-
 	//trainDates初期化
 	var trainDates = [];
 	var trainDate = {};
@@ -75,6 +73,8 @@
 	    	eventSources: eventSources,
 			//日历点击事件
 			dateClick: function(info) {
+				//item初始化
+				initItem($("[id^=item]").length-1);
 				//弹出框标题设置
 				$('#myModalLabel').html('日期：'+info.dateStr);
 				//弹出模态框
