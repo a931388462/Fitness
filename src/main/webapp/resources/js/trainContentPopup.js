@@ -1,11 +1,11 @@
 ;
-//初始化条数
-var initNum = 5;
 //取得要添加节点的代码
 var $addDom = $("#dom").html();
 
+//item初始化
 $(function(){
-	//item初始化
+	//初始化条数
+	var initNum = 5;
 	for(var i=1;i<=initNum;i++){
 		addItemNumber($addDom);
 	}
@@ -64,24 +64,23 @@ function removedom(dom){
 //ajax发送trainContents
 function sendTrainContents() {
 	$.ajax({
-		type : "post",//向后台请求的方式，有post，get两种方法
+		type : "post",//请求方式
 		contentType: "text/html;charset=UTF-8",
-		url : basePath + "/trainContentController",//url填写的是请求的路径
-		cache : false,//缓存是否打开
+		url : basePath + "/trainContentController",//url
+		cache : false,//缓存
 		dataType : 'json',//请求的数据类型
 		data : {//请求的数据，
-			
 			/*aa : [{}],*/
 			trainContents : JSON.stringify(getTrainContents()),
 		},
-		success : function(data) {//请求的返回成功的方法
+		success : function(data) {//请求成功
 			if (data && data.success) {
 				alert("已经删除成功。");
 			} else {
 				alert("删除失败，原因：" + data.msg);
 			}
 		},
-		error : function(XMLHttpRequest, textStatus, errorThrown) {//请求的失败的返回的方法
+		error : function(XMLHttpRequest, textStatus, errorThrown) {//请求失败
 			alert("删除失败，请稍后再次尝试删除！");
 		}
 	});

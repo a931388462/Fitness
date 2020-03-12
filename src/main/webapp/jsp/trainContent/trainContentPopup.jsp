@@ -7,7 +7,7 @@
       <div class="modal-header">
       	<div class="row">
 			<div class="col-md-10">
-				<h4 class="modal-title" id="myModalLabel">日期</h4>
+				<h4 class="modal-title" id="myModalLabel">日期:</h4>
 			</div>
 			<div class="col-md-2">
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>

@@ -73,9 +73,11 @@
 	    	locale: 'zh-cn',
 	    	height:'parent',
 	    	eventSources: eventSources,
+			//日历点击事件
 			dateClick: function(info) {
 				//弹出框标题设置
-				$('#myModalLabel').html(info.dateStr);
+				$('#myModalLabel').html('日期：'+info.dateStr);
+				//弹出模态框
 				$('#myModal').modal();
 			},
 	   });
